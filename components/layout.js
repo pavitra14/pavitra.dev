@@ -5,25 +5,45 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 
 const name = "Pavitra Behre";
-export const siteTitle = "Software Engineer";
+export const siteTitle = "Pavitra Behre | Welcome";
+export const shortIntro =
+  "Hi,I'm a Software Engineer. I write software to make life easy. It's my hobby, my profession. I know how to google and use stackoverflow.";
 
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta property="og:title" content="{siteTitle}" />
+        <meta property="og:locale" content="en_US" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Web Developer, Backend Engineer, Student"
         />
         <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          property="og:description"
+          content="Web Developer, Backend Engineer, Student"
         />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="index.html" />
+        <meta property="og:url" content="https://pbehre.in/" />
+        <meta property="og:site_name" content="{name}" />
       </Head>
       <header className={styles.header}>
         {home ? (
