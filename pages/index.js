@@ -18,7 +18,7 @@ export default function Home({ allPostsData }) {
         <a target="_blank" href="https://www.linkedin.com/in/pavitrabehre">
           <button className={utilStyles.bigbutton}>linkedIn</button>
         </a>
-        <a target="_blank" href="mailto:pavitra.behre@gmail.com" class="btn">
+        <a target="_blank" href="mailto:pavitra.behre@gmail.com">
           <button className={utilStyles.bigbutton}>Mail</button>
         </a>
         <a
