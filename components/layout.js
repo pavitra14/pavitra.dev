@@ -13,6 +13,7 @@ export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
+        <script type="text/javascript" src="/js/https.js"></script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
