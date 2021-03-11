@@ -32,7 +32,7 @@ export default function Layout({ children, home }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta property="og:title" content="{siteTitle}" />
+        <meta property="og:title" content={siteTitle} />
         <meta property="og:locale" content="en_US" />
         <meta
           name="description"
@@ -44,7 +44,7 @@ export default function Layout({ children, home }) {
         />
         <link rel="canonical" href="index.html" />
         <meta property="og:url" content="https://pbehre.in/" />
-        <meta property="og:site_name" content="{name}" />
+        <meta property="og:site_name" content={siteTitle} />
       </Head>
       <header className={styles.header}>
         {home ? (

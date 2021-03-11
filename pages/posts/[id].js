@@ -25,6 +25,10 @@ export default function Post({ postData }) {
     <Layout>
       <Head>
         <title>{postData.title}</title>
+        <meta property="og:title" content={postData.title} />
+        <meta property="og:locale" content="en_US" />
+        <meta name="description" content={postData.excerpt} />
+        <meta property="og:description" content={postData.excerpt} />
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
