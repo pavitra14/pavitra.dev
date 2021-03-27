@@ -7,7 +7,7 @@ export default function Blog({ blogData }) {
     <ul className={utilStyles.list}>
       {blogData.map(({ id, date, title, excerpt }) => (
         <li className={utilStyles.listItem} key={id}>
-          <Link href={`/posts/${id}.html`}>
+          <Link href={`/posts/${id}`}>
             <a>{title}</a>
           </Link>
           <p className={utilStyles.smalltext}>{excerpt}</p>
