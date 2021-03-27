@@ -24,7 +24,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: ./
-          server-dir: ./node_apps/nextjs_blog/
+          local-dir: ./.next/
+          server-dir: ./node_apps/nextjs_blog/.next/
         env:
           CI: true
