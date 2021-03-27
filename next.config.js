@@ -1,3 +1,4 @@
+const { getPath } = require("./scripts/getExportPathMap");
 module.exports = {
   images: {
     loader: "imgix",
@@ -9,5 +10,11 @@ module.exports = {
     }
 
     return config;
+  },
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return getPath();
   },
 };
