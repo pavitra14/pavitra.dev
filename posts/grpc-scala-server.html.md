@@ -28,7 +28,7 @@ I came upon a problem in my work where I was required to use gRPC with Scala. Be
 
 ## Creating the Protobuf
 
-Firstly, we need a proto file containing the messages and a service. We'll create a **HelloWorldProto.proto** file inside *src/main/protobuf* folder.
+Firstly, we need a proto file containing the messages and a service. We'll create a **HelloWorldProto.proto** file inside _src/main/protobuf_ folder.
 
 ```protobuf
 syntax="proto3";
@@ -48,17 +48,17 @@ service HelloWorld {
 }
 ```
 
-- *HelloRequest* - Message to be sent as request to the server
-- *HelloResponse* - Message to be sent as Response to the client
-- *HelloWorld* - gRPC service containing different methods:
-  - *sayHello* - Unary Call
-  - *clientStream* - Client Side Streaming
-  - *serverStream* - Server Side Streaming
-  - *streamHello* - Bi-Directional Streaming
+- _HelloRequest_ - Message to be sent as request to the server
+- _HelloResponse_ - Message to be sent as Response to the client
+- _HelloWorld_ - gRPC service containing different methods:
+  - _sayHello_ - Unary Call
+  - _clientStream_ - Client Side Streaming
+  - _serverStream_ - Server Side Streaming
+  - _streamHello_ - Bi-Directional Streaming
 
-## Implementing the service - *HelloWorld*
+## Implementing the service - _HelloWorld_
 
-Create a new file **HelloService.scala** in *src/main/scala/[your package]/* with the below content:
+Create a new file **HelloService.scala** in _src/main/scala/[your package]/_ with the below content:
 
 ```scala
 package in.pbehre.scala
@@ -77,7 +77,7 @@ This is the basic service structure, needs to extend the HelloWorldGrpc.HelloWor
 
 ### Unary Call - sayHello
 
-This call takes a single *HelloRequest* Object and Returns a *Future* with *HelloResponse* Object.
+This call takes a single _HelloRequest_ Object and Returns a _Future_ with _HelloResponse_ Object.
 
 ```scala
 override def sayHello(request: HelloRequest): Future[HelloResponse] = {
@@ -89,7 +89,7 @@ override def sayHello(request: HelloRequest): Future[HelloResponse] = {
 
 ### Client Side Streaming - clientStream
 
-This will take a stream of objects from the client in a request observer, and then return them back to the client once the stream is end/committed in a single *HelloResponse* Object. Only one request session is used to stream content to the server.
+This will take a stream of objects from the client in a request observer, and then return them back to the client once the stream is end/committed in a single _HelloResponse_ Object. Only one request session is used to stream content to the server.
 
 ```scala
 override def clientStream(responseObserver: StreamObserver[HelloResponse]): StreamObserver[HelloRequest] = {
@@ -116,7 +116,7 @@ override def clientStream(responseObserver: StreamObserver[HelloResponse]): Stre
 
 ### Server Side Streaming - serverStream
 
-Will take a single request *HelloRequest* object which will establish the request and thanks to http2.0, the grpc function will return a multiple stream of *HelloResponse* object in the same request.
+Will take a single request _HelloRequest_ object which will establish the request and thanks to http2.0, the grpc function will return a multiple stream of _HelloResponse_ object in the same request.
 
 ```scala
 override def serverStream(request: HelloRequest, responseObserver: StreamObserver[HelloResponse]): Unit = {
@@ -133,7 +133,7 @@ override def serverStream(request: HelloRequest, responseObserver: StreamObserve
 
 ### Bi-Directional Streaming - streamHello
 
-Takes a stream of *HelloRequest* Objects and returns a stream of *HelloResponse* objects
+Takes a stream of _HelloRequest_ Objects and returns a stream of _HelloResponse_ objects
 
 ```scala
 override def streamHello(responseObserver: StreamObserver[HelloResponse]): StreamObserver[HelloRequest] = {
@@ -232,11 +232,11 @@ class HelloService extends HelloWorldGrpc .HelloWorld {
 }
 ```
 
-#### 
+####
 
 ## Implementing the GRPC Server
 
-Create a new file **HelloServer.scala** in *src/main/scala/[your package]/* with the below content:
+Create a new file **HelloServer.scala** in _src/main/scala/[your package]/_ with the below content:
 
 ```scala
 package in.pbehre.scala
@@ -294,6 +294,3 @@ class HelloWorldServer(executionContext: ExecutionContext) { self =>
 Client Implementation coming soon!
 
 You can find the code and a sample project in this repository: [Github](https://github.com/pavitra14/grpc_hello_server)
-
-
-

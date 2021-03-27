@@ -23,7 +23,7 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
           .map(({ params }) => {
             return `
                     <url>
-                        <loc>${`https://pbehre.in/post/${params.id}`}</loc>
+                        <loc>${`https://pbehre.in/posts/${params.id}`}</loc>
                     </url>
                 `;
           })
