@@ -6,11 +6,11 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         
                     <url>
-                        <loc>https://pbehre.in/posts/grpc-scala-server.html</loc>
+                        <loc>https://pbehre.in/posts/grpc-scala-server</loc>
                     </url>
                 
                     <url>
-                        <loc>https://pbehre.in/posts/hello-world.html</loc>
+                        <loc>https://pbehre.in/posts/hello-world</loc>
                     </url>
                 
     </urlset>
