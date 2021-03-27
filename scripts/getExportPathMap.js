@@ -20,7 +20,7 @@ exports.getPath = async () => {
   };
   list.map(({ params }) => {
     pathMap[`/posts/${params.id}`] = {
-      page: "/",
+      page: `/`,
       query: { slug: `posts/${params.id}` },
     };
   });
