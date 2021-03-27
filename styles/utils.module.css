@@ -97,3 +97,8 @@
 .smalltext {
   font-size: 15px;
 }
+
+.links {
+  margin: auto;
+  text-align: center;
+}

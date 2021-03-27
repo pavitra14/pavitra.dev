@@ -10,7 +10,7 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section id="links">
+      <section className={utilStyles.links}>
         <a target="_blank" href="https://github.com/pavitra14">
           <button className={utilStyles.bigbutton}>GitHub</button>
         </a>
