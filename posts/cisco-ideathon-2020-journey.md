@@ -45,7 +45,7 @@ So buckle up, you're in for a ride!
   - C/C++ Equivalent Course.
 
   _Not all courses are mandatory but it's highly recommended that you do them all_
-  
+
 - Coding Skills (Duh!)
 
 - Internet Connection 😐
@@ -73,9 +73,9 @@ Probably one of the most important round, as major shortlisting is done here. Yo
 
 ### Round 2A: Video Submission (Knockout round)
 
-This is the round where you'll see the spirit of Ideathon. Also known as the "*Ideation*" round. You're given three problem statements, each one completely different from the other and unique in their own way. You're required to Analyse, Research and Come up with a solution for any one of them using 5G or any other latest technologies. Your solution should be unique, innovative, scalable and feasible to implement. Here's the catch, you only have **90 seconds** to do all that! Not one second less, Not one second more. Exact 90seconds. It should be well shot, well edited, well rendered and should contain enough research to make your solution viable. You get approximately 4-6 days to complete everything and upload. Always upload atleast a day before the deadline to avoid any issues.
+This is the round where you'll see the spirit of Ideathon. Also known as the "_Ideation_" round. You're given three problem statements, each one completely different from the other and unique in their own way. You're required to Analyse, Research and Come up with a solution for any one of them using 5G or any other latest technologies. Your solution should be unique, innovative, scalable and feasible to implement. Here's the catch, you only have **90 seconds** to do all that! Not one second less, Not one second more. Exact 90seconds. It should be well shot, well edited, well rendered and should contain enough research to make your solution viable. You get approximately 4-6 days to complete everything and upload. Always upload atleast a day before the deadline to avoid any issues.
 
-*I'm not sure if we're allowed to share our videos, but will update this in future if any update is there.*
+_I'm not sure if we're allowed to share our videos, but will update this in future if any update is there._
 
 ### Round 2B: Competency Assessment Test (Not a Knockout round)
 
@@ -97,8 +97,6 @@ They'll ask you questions and some situations, how you will handle them and how 
 
 Do not believe in hearsay that you cannot get rejected in HR round! This round is as important as any other. They check your communication skills, confidence and your ability to handle things. You'll be told your offer CTC in this round so listen carefully too!
 
-
-
 ### There's no Round 7
 
 You're done and in a few days you'll get your result. Congratulations and all the best!
@@ -107,8 +105,6 @@ At the time of writing this article, I'm currently a Software Engineer Intern @ 
 
 <img src="https://i.imgur.com/ieNZBMg.jpg" alt="Cisco Day One" style="zoom:50%;" />
 
-
-
 ##### References:
 
 - [NetAcad](https://www.netacad.com)
@@ -116,7 +112,3 @@ At the time of writing this article, I'm currently a Software Engineer Intern @ 
 - [Full Series | 200-301 CCNA | Free Cisco Video Training 2020 | Networking Inc.](https://www.youtube.com/watch?v=n2D1o-aM-2s&list=PLh94XVT4dq02frQRRZBHzvj2hwuhzSByN)
 
 - [Data Structures](https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
-
-  
-
-  
