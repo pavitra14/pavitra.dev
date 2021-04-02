@@ -10,11 +10,19 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                     </url>
                 
                     <url>
+                        <loc>https://pbehre.in/posts/coding-exercise-tictactoe.html</loc>
+                    </url>
+                
+                    <url>
                         <loc>https://pbehre.in/posts/grpc-scala-server.html</loc>
                     </url>
                 
                     <url>
                         <loc>https://pbehre.in/posts/hello-world.html</loc>
+                    </url>
+                
+                    <url>
+                        <loc>https://pbehre.in/posts/linkedlist-implementation-operations.html</loc>
                     </url>
                 
     </urlset>
