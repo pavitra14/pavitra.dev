@@ -5,15 +5,20 @@ import utilStyles from "../styles/utils.module.css";
 export default function Blog({ blogData }) {
   // some code...
   const ConditionalWrapper = ({ condition, linkref, title }) => {
-    return condition == "DEV" ? (
+    return (
       <Link href={linkref}>
-        <a>DEVMODE: {title}</a>
-      </Link>
-    ) : (
-      <Link href={linkref} as={linkref + ".html"}>
         <a>{title}</a>
       </Link>
     );
+//     return condition == "DEV" ? (
+//       <Link href={linkref}>
+//         <a>DEVMODE: {title}</a>
+//       </Link>
+//     ) : (
+//       <Link href={linkref} as={linkref + ".html"}>
+//         <a>{title}</a>
+//       </Link>
+//     );
   };
   return (
     <ul className={utilStyles.list}>
