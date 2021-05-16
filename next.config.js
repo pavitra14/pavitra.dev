@@ -5,6 +5,7 @@ const {
 } = require("next/constants");
 
 module.exports = (phase) => {
+  distDir: "build",
   var props = {
     images: {
       loader: "imgix",
