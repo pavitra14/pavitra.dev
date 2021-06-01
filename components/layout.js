@@ -7,7 +7,7 @@ import Link from "next/link";
 const name = "Pavitra Behre";
 export const siteTitle = "Pavitra Behre | Welcome";
 export const shortIntro =
-  "Hi,I'm a Software Engineer. I write software to make life easy. It's my hobby, my profession. I know how to google and use stackoverflow.";
+  "Hi,I'm a Software Engineer/Techie/Human/AI. I write software to make life easy.";
 
 export default function Layout({ children, home }) {
   return (
