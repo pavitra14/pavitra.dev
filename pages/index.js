@@ -34,7 +34,7 @@ export default function Home({ allPostsData }) {
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>What I do?</h2>
-        <p>I Make computers go *beep bop beep boop* jk, I love to write code, <br /> and making a piece of sand to perform whatever tasks I ask it to do is a great power. <br /> I use this power to be lazy :)</p>
+        <p>I make computers go *beep bop beep boop* jk, love to write code, and making a piece of sand to perform whatever tasks I ask it to do is a great power. I use this power to be lazy :)</p>
       </section>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
