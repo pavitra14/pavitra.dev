@@ -1,5 +1,4 @@
 import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
@@ -7,7 +6,9 @@ import "prismjs/themes/prism.css";
 import Image from "next/image";
 
 export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
+  const res = await fetch(`http://pbehre.in:3001/blog/getPost/${params.id}`);
+  const postData = await res.json();
+  console.log(postData)
   return {
     props: {
       postData,
@@ -15,7 +16,8 @@ export async function getStaticProps({ params }) {
   };
 }
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const res = await fetch(`http://pbehre.in:3001/blog/getAllPostIds`);
+  const paths = await res.json();
   return {
     paths,
     fallback: false,

@@ -63,7 +63,7 @@ function getAllPostIds() {
   return cache.getAllPostIds;
 }
 
-function getPostData(id) {
+async function getPostData(id) {
   if(cache.postData == undefined)
   {
     cache.postData = {};
@@ -80,7 +80,7 @@ function getPostData(id) {
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string
-  const processedContent = remark()
+  const processedContent = await remark()
     .use(html)
     .use(prism)
     .process(matterResult.content);

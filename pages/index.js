@@ -1,10 +1,9 @@
 import Head from "next/head";
 import Layout, { siteTitle, shortIntro } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
-import { getSortedPostsData } from "../lib/posts";
 import Blog from "../components/blog";
 
-export default function Home({ allPostsData }) {
+function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -46,10 +45,17 @@ export default function Home({ allPostsData }) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('http://pbehre.in:3001/blog/getSortedPostsData');
+  const allPostsData = await res.json();
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
   return {
     props: {
       allPostsData,
     },
-  };
+  }
 }
+
+export default Home
