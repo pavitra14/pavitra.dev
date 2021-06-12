@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "api": "node api.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
