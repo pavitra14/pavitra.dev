@@ -8,9 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "date-fns": "^2.19.0",
+    "express": "^4.17.1",
     "gray-matter": "^4.0.2",
+    "helmet": "^4.6.0",
     "next": "^10.0.0",
+    "nprogress": "^0.2.0",
     "prismjs": "^1.23.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
