@@ -1,5 +1,6 @@
 import Router from 'next/router'
 import "../styles/global.css";
+import "../styles/nprogress.css";
 import NProgress from 'nprogress'
 
 Router.events.on('routeChangeStart', ()=> NProgress.start())
