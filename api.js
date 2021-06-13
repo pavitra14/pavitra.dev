@@ -17,7 +17,7 @@ app.get('/blog/getPost/:id', async (req, res) => {
     res.end(JSON.stringify(postData))
 });
 
-app.get('/blog/getCache', (req, res) => res.end(JSON.stringify(posts.getCache())));
+app.post('/blog/updateCache', (req, res) => res.end(JSON.stringify(posts.updateCache())));
 
 var server = app.listen(3001, function () {
     var host = server.address().address

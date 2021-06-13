@@ -44,7 +44,7 @@ function Home({ allPostsData }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const res = await fetch('http://pbehre.in:3001/blog/getSortedPostsData');

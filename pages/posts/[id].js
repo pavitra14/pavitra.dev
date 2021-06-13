@@ -5,24 +5,23 @@ import utilStyles from "../../styles/utils.module.css";
 import "prismjs/themes/prism.css";
 import Image from "next/image";
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const res = await fetch(`http://pbehre.in:3001/blog/getPost/${params.id}`);
   const postData = await res.json();
-  console.log(postData)
   return {
     props: {
       postData,
     },
   };
 }
-export async function getStaticPaths() {
-  const res = await fetch(`http://pbehre.in:3001/blog/getAllPostIds`);
-  const paths = await res.json();
-  return {
-    paths,
-    fallback: false,
-  };
-}
+// export async function getStaticPaths() {
+//   const res = await fetch(`http://pbehre.in:3001/blog/getAllPostIds`);
+//   const paths = await res.json();
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
 
 export default function Post({ postData }) {
   return (

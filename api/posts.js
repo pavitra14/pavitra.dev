@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const prism = require("remark-prism");
+const exec = require('child_process').exec;
 
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -96,8 +97,10 @@ async function getPostData(id) {
   return retVal;
 }
 
-function getCache()
+function updateCache()
 {
+  exec("git pull");
+  cache = {};
   return cache;
 }
-module.exports = { getAllPostIds, getPostData, getSortedPostsData, getCache }
+module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache }

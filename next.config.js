@@ -18,13 +18,6 @@ module.exports = (phase) => {
 
       return config;
     },
-
-    exportPathMap: async function (
-      defaultPathMap,
-      { dev, dir, outDir, distDir, buildId }
-    ) {
-      return getPath();
-    },
     env: {
       mode: "",
     },
