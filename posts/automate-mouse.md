@@ -1,7 +1,7 @@
 ---
 title: "Automate Mouse Cursor Randomly via Python"
 date: "2021-06-27"
-excerpt: "Automate your desktop cursor using Python in Less than 20 lines your code. Usefull to always appear online in office applications :v"
+excerpt: "Automate your desktop cursor using Python in Less than 20 lines your code. Useful to always appear online in office applications :v"
 ---
 
 # Automating Mouse Cursor
