@@ -141,5 +141,5 @@ python automate.py
 
 ### References
 
-- [Automate the Boring Stuff - Artcile/Chapter](https://automatetheboringstuff.com/chapter18/)
+- [Automate the Boring Stuff - Article/Chapter](https://automatetheboringstuff.com/chapter18/)
 - [Github Link](https://github.com/pavitra14/AutomateMouseCursor)
