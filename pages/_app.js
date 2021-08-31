@@ -1,11 +1,18 @@
-import Router from 'next/router'
-import "../styles/global.css";
-import "../styles/nprogress.css";
-import NProgress from 'nprogress'
+// import App from 'next/app'
+import { reset, globals } from 'styles'
 
-Router.events.on('routeChangeStart', ()=> NProgress.start())
-Router.events.on('routeChangeComplete', () => NProgress.done())
-Router.events.on('routeChangeError', () => NProgress.done())
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <style jsx global>
+        {reset}
+      </style>
+      <style jsx global>
+        {globals}
+      </style>
+      <Component {...pageProps} />
+    </>
+  )
 }
+
+export default MyApp

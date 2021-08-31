@@ -1,61 +1,65 @@
+import React from "react";
 import Head from "next/head";
-import Layout, { siteTitle, shortIntro } from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
-import Blog from "../components/blog";
+import Prismic from '@prismicio/client'
+import { RichText } from "prismic-reactjs";
 
-function Home({ allPostsData }) {
-  return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.links}>
-        <a target="_blank" href="https://github.com/pavitra14">
-          <button className={utilStyles.bigbutton}>GitHub</button>
-        </a>
-        <a target="_blank" href="https://www.linkedin.com/in/pavitrabehre">
-          <button className={utilStyles.bigbutton}>linkedIn</button>
-        </a>
-        <a target="_blank" href="mailto:pavitra.behre@gmail.com">
-          <button className={utilStyles.bigbutton}>Mail</button>
-        </a>
-        <a
-          target="_blank"
-          href="https://pbehre.in/resumes/Resume.pdf"
-          alt="Pavitra Behre - Resume"
-        >
-          <button className={utilStyles.bigbutton}>Resume/CV</button>
-        </a>
-      </section>
-      <section className={utilStyles.headingMd}>
-        <p>{shortIntro}</p>
-      </section>
+// Project components & functions
+import DefaultLayout from "layouts";
+import { Header, PostList, SetupRepo } from "components/home";
+import { Client } from "utils/prismicHelpers";
 
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>What I do?</h2>
-        <p>I make computers go *beep bop beep boop* jk, love to write code, and making a piece of sand to perform whatever tasks I ask it to do is a great power. I use this power to be lazy :)</p>
-      </section>
+/**
+ * Homepage component
+ */
+const Home = ({ doc, posts }) => {
+  if (doc && doc.data) {
+    return (
+      <DefaultLayout>
+        <Head>
+          <title>{RichText.asText(doc.data.headline)}</title>
+        </Head>
+        <Header
+          image={doc.data.image}
+          headline={doc.data.headline}
+          description={doc.data.description}
+          home_data={doc.data.home_data}
+          github={doc.data.github.url}
+          linkedin={doc.data.linkedin.url}
+          resume={doc.data.resume.url}
+        />
+        <PostList posts={posts} />
+      </DefaultLayout>
+    );
+  }
 
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <Blog blogData={allPostsData} />
-      </section>
-    </Layout>
-  );
-}
+  // Message when repository has not been setup yet
+  return <SetupRepo />;
+};
 
-export async function getServerSideProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch('http://pbehre.in:3001/blog/getSortedPostsData');
-  const allPostsData = await res.json();
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+export async function getStaticProps({ preview = null, previewData = {} }) {
+
+  const { ref } = previewData
+
+  const client = Client()
+
+  const doc = await client.getSingle("blog_home", ref ? { ref } : null) || {}
+
+  const posts = await client.query(
+    Prismic.Predicates.at("document.type", "post"), {
+      orderings: "[my.post.date desc]",
+      ...(ref ? { ref } : null)
+    },
+  )
+
+  console.log(doc.data.github.url)
+
   return {
     props: {
-      allPostsData,
-    },
+      doc,
+      posts: posts ? posts.results : [],
+      preview
+    }
   }
 }
 
-export default Home
+export default Home;

@@ -1,27 +1,21 @@
 {
-  "name": "learn-starter",
-  "version": "0.1.0",
-  "private": true,
+  "name": "nextjs-blog",
+  "description": "Sample blog built with Next.js using Prismic headless CMS",
+  "author": "Prismic",
+  "dependencies": {
+    "@prismicio/client": "^4.0.0",
+    "next": "^9.1.4",
+    "prismic-reactjs": "^1.1.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "api": "node api.js"
+    "start": "next start"
   },
-  "dependencies": {
-    "compression": "^1.7.4",
-    "date-fns": "^2.19.0",
-    "express": "^4.17.1",
-    "gray-matter": "^4.0.2",
-    "helmet": "^4.6.0",
-    "next": "^10.0.0",
-    "nprogress": "^0.2.0",
-    "prismjs": "^1.23.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "remark": "^13.0.0",
-    "remark-html": "^13.0.1",
-    "remark-prism": "^1.3.4",
-    "serve": "^11.3.2"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prismicio/nextjs-blog"
   }
 }
