@@ -4,7 +4,7 @@ date: "2021-03-27"
 excerpt: "Handling Unary, Client Side Streaming, Server Side Streaming and Bi-Directional Streaming Calls in gRPC using Scala"
 ---
 
-# What is RPC?
+## What is RPC?
 
 **Remote Procedure Call (RPC)** is a powerful technique for constructing **distributed, client-server based applications**. It is based on extending the conventional local procedure calling so that the **called procedure need not exist in the same address space as the calling procedure**.
 

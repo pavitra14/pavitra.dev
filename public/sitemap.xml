@@ -6,6 +6,10 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         
                     <url>
+                        <loc>https://pbehre.in/posts/automate-mouse.html</loc>
+                    </url>
+                
+                    <url>
                         <loc>https://pbehre.in/posts/cisco-ideathon-2020-journey.html</loc>
                     </url>
                 

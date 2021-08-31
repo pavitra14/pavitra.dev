@@ -4,7 +4,7 @@ date: "2021-04-01"
 excerpt: "Writing a TicTacToe Console Game in C++ and Java - A Coding Exercise for beginners"
 ---
 
-# TicTacToe - Coding Exercise for Beginners
+## TicTacToe - Coding Exercise for Beginners
 
 Who doesn't love a litle tictactoe on the back of their notebooks during class/lectures. Using this inspiration, Last year I tried to write my own tictactoe console version when I was preparing for my interviews. In this, It'll be You versus the CPU, catch is, CPU is only random, not any AI (It's a beginners tutorial, AI one will come later)
 

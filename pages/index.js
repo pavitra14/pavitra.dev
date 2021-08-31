@@ -9,27 +9,12 @@ function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.links}>
-        <a target="_blank" href="https://github.com/pavitra14">
-          <button className={utilStyles.bigbutton}>GitHub</button>
-        </a>
-        <a target="_blank" href="https://www.linkedin.com/in/pavitrabehre">
-          <button className={utilStyles.bigbutton}>linkedIn</button>
-        </a>
-        <a target="_blank" href="mailto:pavitra.behre@gmail.com">
-          <button className={utilStyles.bigbutton}>Mail</button>
-        </a>
-        <a
-          target="_blank"
-          href="https://pbehre.in/resumes/Resume.pdf"
-          alt="Pavitra Behre - Resume"
-        >
-          <button className={utilStyles.bigbutton}>Resume/CV</button>
-        </a>
-      </section>
-      <section className={utilStyles.headingMd}>
-        <p>{shortIntro}</p>
-      </section>
+      <div className="home">
+      <p className="blog-description">{shortIntro}</p>
+        <p className="blog-links">
+        <a href="" target="_blank">Github</a> | <a href="" target="_blank">Resume</a> | <a href="" target="_blank">LinkedIn</a>
+      </p>
+      </div>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>What I do?</h2>

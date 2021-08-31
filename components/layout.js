@@ -7,7 +7,7 @@ import Link from "next/link";
 const name = "Pavitra Behre";
 export const siteTitle = "Pavitra Behre | Welcome";
 export const shortIntro =
-  "Hi,I'm a Software Engineer/Techie/Human/AI. I write software to make life easy.";
+  "Software Engineer @ Cisco 🇮🇳";
 
 export default function Layout({ children, home }) {
   return (
@@ -45,48 +45,32 @@ export default function Layout({ children, home }) {
         <meta property="og:url" content="https://pbehre.in/" />
         <meta property="og:site_name" content={siteTitle} />
       </Head>
-      <header className={styles.header}>
+      <div className="home">
         {home ? (
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-              unoptimized={true}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <div className="blog-avatar" style= {{ backgroundImage: `url('/images/profile.jpg')`}} />
+            <h1 className="blog-title">{name}</h1>
           </>
         ) : (
           <>
             <Link href="/">
               <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                  unoptimized={true}
-                />
+                <div className="blog-avatar" style= {{ backgroundImage: `url('/images/profile.jpg')`}} />
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className="blog-title">{name}</a>
               </Link>
             </h2>
           </>
         )}
-      </header>
+      </div>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className="back">
           <Link href="/">
-            <a>← Back to home</a>
+            <a>Back to home</a>
           </Link>
         </div>
       )}

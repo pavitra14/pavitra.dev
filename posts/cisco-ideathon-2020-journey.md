@@ -6,7 +6,7 @@ excerpt: "How I prepared for Cisco Ideathon 2020 and How to prepare for Ideathon
 
 ![Cisco Ideathon (Pic from Cisco Resonance 2nd Edition)](https://i.imgur.com/07AoFXc.jpg)
 
-# What is Cisco Ideathon?
+## What is Cisco Ideathon?
 
 > #### _Between dreams and reality, there is a bridge._
 

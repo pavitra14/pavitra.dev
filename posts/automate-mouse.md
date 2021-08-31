@@ -4,7 +4,7 @@ date: "2021-06-27"
 excerpt: "Automate your desktop cursor using Python in Less than 20 lines your code. Useful to always appear online in office applications :v"
 ---
 
-# Automating Mouse Cursor
+## Automating Mouse Cursor
 
 ***Disclaimer: I'm writing this post just for educational purposes and I do not support Time Theft. I think automation is pretty cool so that's why I make such stuff.***
 

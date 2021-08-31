@@ -6,7 +6,7 @@ excerpt: "Linked List Data Structure Implementation and Operations in best time 
 
 ![Linked List](https://i.imgur.com/NgbfvK9.png)
 
-# What is a Linked List?
+## What is a Linked List?
 
 A Linked list is a common data structure made of chain of nodes, in which each node contains two fields, *data*  which holds the data and *next* which holds the address to next node in the chain.
 

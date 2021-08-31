@@ -4,7 +4,7 @@ date: "2021-03-10"
 excerpt: "This is my first blog post. Many juniors from my college encouraged me to start writing a blog about my journey as a software engineer. This is my attempt for the same."
 ---
 
-# Hello World!
+## Hello World!
 
 This is my first blog post. Many juniors from my college encouraged me to start writing a blog about my journey as a software engineer. This is my attempt for the same.
 
