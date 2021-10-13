@@ -100,6 +100,9 @@ async function getPostData(id) {
 function updateCache()
 {
   exec("git pull");
+  exec("yarn install");
+  exec("yarn build");
+  exec("pm2 restart all");
   cache = {};
   return cache;
 }
