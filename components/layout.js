@@ -7,7 +7,7 @@ import Link from "next/link";
 const name = "Pavitra Behre";
 export const siteTitle = "Pavitra Behre | Welcome";
 export const shortIntro =
-  "Software Engineer @ Cisco 🇮🇳";
+  "Software Development Engineer - I @ Amazon 🇮🇳";
 
 export default function Layout({ children, home }) {
   return (
