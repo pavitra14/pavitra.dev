@@ -138,4 +138,4 @@ async function updateCache()
   exec("pm2 restart pbehrein")
   return fs.existsSync(cacheFilePath);
 }
-module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache }
+module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache, getCache }

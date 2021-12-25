@@ -1,40 +1,77 @@
 import Link from "next/link";
 import Date from "../components/date";
+import Constants from "../constants/constants";
 import utilStyles from "../styles/utils.module.css";
+import { useCallback, useRef, useState } from 'react'
+import styles from "./blog.module.css";
 
 export default function Blog({ blogData }) {
-  // some code...
-  const ConditionalWrapper = ({ condition, linkref, title }) => {
-    return (
-      <Link href={linkref}>
-        <a>{title}</a>
-      </Link>
-    );
-//     return condition == "DEV" ? (
-//       <Link href={linkref}>
-//         <a>DEVMODE: {title}</a>
-//       </Link>
-//     ) : (
-//       <Link href={linkref} as={linkref + ".html"}>
-//         <a>{title}</a>
-//       </Link>
-//     );
-  };
+  const searchRef = useRef(null)
+  const [query, setQuery] = useState('')
+  const [active, setActive] = useState(true)
+  const [results, setResults] = useState(blogData)
+
+  const searchEndpoint = (query) => `${Constants.GET_ROUTE('search')}${query}`
+
+  const onChange = useCallback((event) => {
+    const query = event.target.value;
+    setQuery(query)
+    if (query.length) {
+      fetch(searchEndpoint(query))
+        .then(res => res.json())
+        .then(res => {
+          setResults(res)
+        })
+    } else {
+      setResults(blogData)
+    }
+  }, [])
+
+  const onFocus = useCallback(() => {
+    setActive(true)
+    window.addEventListener('click', onClick)
+  }, [])
+
+  const onClick = useCallback((event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setActive(false)
+      window.removeEventListener('click', onClick)
+    }
+  }, [])
+
+
   return (
-    <ul className={utilStyles.list}>
-      {blogData.map(({ id, date, title, excerpt }) => (
-        <li className={utilStyles.listItem} key={id}>
-          <ConditionalWrapper
-            condition={process.env.mode}
-            linkref={`/posts/${id}`}
-            title={title}
-          />
-          <p className={utilStyles.smalltext}>{excerpt}</p>
-          <small className={utilStyles.lightText}>
-            <Date dateString={date} />
-          </small>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <div className={styles.searchBar}>
+        <h2 
+        className={`${styles.blogTitle}`}
+        >Blog </h2>
+        <input
+          className={styles.search__input}
+          onChange={onChange}
+          onFocus={onFocus}
+          placeholder='Search posts'
+          type='text'
+          value={query}
+        />
+      </div>
+
+      { active && results.length > 0 && (
+        
+        <ul className={utilStyles.list}>
+            {results.map(({ id, date, title, excerpt }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
+              <p className={utilStyles.smalltext}>{excerpt}</p>
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
+            </li>
+          ))}
+        </ul>
+      ) }
+    </div>
   );
 }

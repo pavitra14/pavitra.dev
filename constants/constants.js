@@ -13,7 +13,8 @@ export default class Constants{
     static API_ROUTES = {
         getSortedPostsData: "/api/blog/getSortedPostsData",
         getPost: "/api/blog/getPost?id=",
-        getAllPostIds: "/api/blog/getAllPostIds"
+        getAllPostIds: "/api/blog/getAllPostIds",
+        search: "/api/search?q="
     }
 
     static GET_ROUTE = (route) => {
