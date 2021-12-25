@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const prism = require("remark-prism");
+const { exec } = require("child_process");
 
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -133,6 +134,8 @@ async function updateCache()
     if (err) return console.log(err);
     console.log('Posts cached.');
   });
+
+  exec("pm2 restart pbehrein")
   return fs.existsSync(cacheFilePath);
 }
 module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache }
