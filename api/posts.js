@@ -4,13 +4,21 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const prism = require("remark-prism");
-const exec = require('child_process').exec;
 
 
 const postsDirectory = path.join(process.cwd(), "posts");
-var cache = {};
+const cacheFilePath = path.join(process.cwd(), "cache/data.js");
 
+function getCache() {
+  if(fs.existsSync(cacheFilePath)) {
+    var data = require("../cache/data");
+    var cache = data.cache;
+    return cache
+  }
+  return {}
+}
 function getSortedPostsData() {
+  var cache = getCache();
   if(cache.getSortedPostsData != undefined)
   {
     return cache.getSortedPostsData;
@@ -48,6 +56,7 @@ function getSortedPostsData() {
 }
 
 function getAllPostIds() {
+  var cache = getCache();
   if(cache.getAllPostIds != undefined)
   {
     return cache.getAllPostIds;
@@ -65,6 +74,7 @@ function getAllPostIds() {
 }
 
 async function getPostData(id) {
+  var cache = getCache();
   if(cache.postData == undefined)
   {
     cache.postData = {};
@@ -97,13 +107,32 @@ async function getPostData(id) {
   return retVal;
 }
 
-function updateCache()
+async function updateCache()
 {
-  exec("git pull");
-  exec("yarn install");
-  exec("yarn build");
-  exec("pm2 restart all");
-  cache = {};
-  return cache;
+  newCache = {}
+  allIds = getAllPostIds();
+  newCache.postData = {}
+  for (let index = 0; index < allIds.length; index++) {
+    const obj = allIds[index];
+    let id = obj.params.id;
+    let data = await getPostData(id);
+    newCache.postData[id] = data
+  }
+
+  newCache.getAllPostIds = allIds;
+  newCache.getSortedPostsData = getSortedPostsData();
+
+  try {
+    fs.readdirSync('cache')
+  } catch (e) {
+    fs.mkdirSync('cache')
+  }
+  let cacheFileContent = `export const cache = ${JSON.stringify(newCache)}`
+
+  fs.writeFile('cache/data.js', cacheFileContent, function (err) {
+    if (err) return console.log(err);
+    console.log('Posts cached.');
+  });
+  return fs.existsSync(cacheFilePath);
 }
 module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache }
