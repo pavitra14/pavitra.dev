@@ -134,7 +134,7 @@ async function updateCache()
     if (err) return console.log(err);
     console.log('Posts cached.');
   });
-
+  exec("yarn install && yarn build")
   exec("pm2 restart pbehrein")
   return fs.existsSync(cacheFilePath);
 }
