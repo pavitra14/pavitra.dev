@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout, { siteTitle, shortIntro } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import Blog from "../components/blog";
+import Constants from "../constants/constants";
 
 function Home({ allPostsData }) {
   return (
@@ -32,7 +33,8 @@ function Home({ allPostsData }) {
 export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('http://pbehre.in:3001/blog/getSortedPostsData');
+  const route = Constants.GET_ROUTE("getSortedPostsData");
+  const res = await fetch(route);
   const allPostsData = await res.json();
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time

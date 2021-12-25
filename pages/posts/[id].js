@@ -4,9 +4,11 @@ import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import "prismjs/themes/prism.css";
 import Image from "next/image";
+import Constants from "../../constants/constants";
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`http://pbehre.in:3001/blog/getPost/${params.id}`);
+  const route = Constants.GET_ROUTE("getPost");
+  const res = await fetch(`${route}${params.id}`);
   const postData = await res.json();
   return {
     props: {
