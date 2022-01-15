@@ -10,16 +10,16 @@ const { exec } = require("child_process");
 const postsDirectory = path.join(process.cwd(), "posts");
 const cacheFilePath = path.join(process.cwd(), "cache/data.js");
 
-function getCache() {
-  if(fs.existsSync(cacheFilePath)) {
+function getCache(cached = true) {
+  if(fs.existsSync(cacheFilePath) && cached) {
     var data = require("../cache/data");
     var cache = data.cache;
     return cache
   }
   return {}
 }
-function getSortedPostsData() {
-  var cache = getCache();
+function getSortedPostsData(cached = true) {
+  var cache = getCache(cached);
   if(cache.getSortedPostsData != undefined)
   {
     return cache.getSortedPostsData;
@@ -56,8 +56,8 @@ function getSortedPostsData() {
   return cache.getSortedPostsData;
 }
 
-function getAllPostIds() {
-  var cache = getCache();
+function getAllPostIds(cached = true) {
+  var cache = getCache(cached);
   if(cache.getAllPostIds != undefined)
   {
     return cache.getAllPostIds;
@@ -74,8 +74,8 @@ function getAllPostIds() {
   return cache.getAllPostIds;
 }
 
-async function getPostData(id) {
-  var cache = getCache();
+async function getPostData(id, cached = true) {
+  var cache = getCache(cached);
   if(cache.postData == undefined)
   {
     cache.postData = {};
@@ -111,18 +111,17 @@ async function getPostData(id) {
 async function updateCache()
 {
   newCache = {}
-  allIds = getAllPostIds();
+  allIds = getAllPostIds(false);
   newCache.postData = {}
   for (let index = 0; index < allIds.length; index++) {
     const obj = allIds[index];
     let id = obj.params.id;
-    let data = await getPostData(id);
+    let data = await getPostData(id, false);
     newCache.postData[id] = data
   }
 
   newCache.getAllPostIds = allIds;
-  newCache.getSortedPostsData = getSortedPostsData();
-
+  newCache.getSortedPostsData = getSortedPostsData(false);
   try {
     fs.readdirSync('cache')
   } catch (e) {
@@ -133,6 +132,7 @@ async function updateCache()
   fs.writeFile('cache/data.js', cacheFileContent, function (err) {
     if (err) return console.log(err);
     console.log('Posts cached.');
+    console.log(newCache.getSortedPostsData);
   });
   exec("git pull")
   exec("yarn install && yarn build")
