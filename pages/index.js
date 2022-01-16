@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout, { siteTitle, shortIntro } from "../components/layout";
+import Layout from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import Blog from "../components/blog";
 import Constants from "../constants/constants";
@@ -8,10 +8,10 @@ function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{Constants.SITE_TITLE}</title>
       </Head>
       <div className="home">
-      <p className="blog-description">{shortIntro}</p>
+      <p className="blog-description">{Constants.SHORT_INTRO}</p>
         <p className="blog-links">
         <a href="https://github.com/pavitra14" target="_blank">Github</a> | <a href="https://pbehre.in/resumes/Resume.pdf" target="_blank">Resume</a> | <a href="https://www.linkedin.com/in/pavitrabehre" target="_blank">LinkedIn</a>
       </p>

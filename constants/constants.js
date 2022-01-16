@@ -1,4 +1,8 @@
 export default class Constants{
+    static SITE_TITLE = "Pavitra Behre | Welcome";
+    static USER_NAME = "Pavitra Behre"
+    static SITE_DESCRIPTION= "Web Developer, Backend Engineer, Student";
+    static SHORT_INTRO = "Software Development Engineer - I @ Amazon 🇮🇳";
 
     static REMOTE_URL = "https://pbehre.in";
     static DEV_URL = "http://localhost:3000";
