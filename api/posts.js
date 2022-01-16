@@ -110,6 +110,8 @@ async function getPostData(id, cached = true) {
 
 async function updateCache()
 {
+  exec("git pull");
+  
   newCache = {}
   allIds = getAllPostIds(false);
   newCache.postData = {}
@@ -134,7 +136,7 @@ async function updateCache()
     console.log('Posts cached.');
     console.log(newCache.getSortedPostsData);
   });
-  exec("git pull")
+  
   exec("yarn install && yarn build")
   exec("pm2 restart pbehrein")
   return fs.existsSync(cacheFilePath);
