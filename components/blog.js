@@ -4,6 +4,7 @@ import Constants from "../constants/constants";
 import utilStyles from "../styles/utils.module.css";
 import { useCallback, useRef, useState } from 'react'
 import styles from "./blog.module.css";
+import Views from "./views";
 
 export default function Blog({ blogData }) {
   const searchRef = useRef(null)
@@ -67,6 +68,7 @@ export default function Blog({ blogData }) {
               <p className={utilStyles.smalltext}>{excerpt}</p>
               <small className={utilStyles.lightText}>
                 <Date dateString={date} />
+                <div className={`${utilStyles.right} ${utilStyles.smalltext}`}><Views id={id}/></div>
               </small>
             </li>
           ))}

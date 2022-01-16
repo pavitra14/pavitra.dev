@@ -5,6 +5,7 @@ import utilStyles from "../../styles/utils.module.css";
 import "prismjs/themes/prism.css";
 import Image from "next/image";
 import Constants from "../../constants/constants";
+import Views from "../../components/views";
 
 export async function getServerSideProps({ params }) {
   const route = Constants.GET_ROUTE("getPost");
@@ -16,14 +17,6 @@ export async function getServerSideProps({ params }) {
     },
   };
 }
-// export async function getStaticPaths() {
-//   const res = await fetch(`http://pbehre.in:3001/blog/getAllPostIds`);
-//   const paths = await res.json();
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
 
 export default function Post({ postData }) {
   return (
@@ -38,8 +31,11 @@ export default function Post({ postData }) {
       <article>
         <h1>{postData.title}</h1>
         
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+        <div>
+          <div className={utilStyles.lightText}>
+            <Date dateString={postData.date} />
+            <div className={utilStyles.right}><Views id={postData.id}/></div>
+          </div>
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>

@@ -14,7 +14,8 @@ export default class Constants{
         getSortedPostsData: "/api/blog/getSortedPostsData",
         getPost: "/api/blog/getPost?id=",
         getAllPostIds: "/api/blog/getAllPostIds",
-        search: "/api/search?q="
+        search: "/api/search?q=",
+        pageViews: "/api/pageViews?q="
     }
 
     static GET_ROUTE = (route) => {

@@ -102,3 +102,7 @@
   margin: auto;
   text-align: center;
 }
+
+.right {
+  float: right;
+}
