@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import Constants from "../constants/constants";
 
-export default function Views({ id }) {
+export default function Views({ id, classes }) {
     const q = id;
     const route = Constants.GET_ROUTE("pageViews");
     const {
@@ -15,6 +15,6 @@ export default function Views({ id }) {
     const views = data?.pageViews || 0;
 
     return (
-        <span>{views} views</span>
+        <span className={classes}>{views} views</span>
     );
 }

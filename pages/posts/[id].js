@@ -6,6 +6,7 @@ import "prismjs/themes/prism.css";
 import Image from "next/image";
 import Constants from "../../constants/constants";
 import Views from "../../components/views";
+import { Row, Col } from "react-bootstrap";
 
 export async function getServerSideProps({ params }) {
   const route = Constants.GET_ROUTE("getPost");
@@ -32,10 +33,14 @@ export default function Post({ postData }) {
         <h1>{postData.title}</h1>
         
         <div>
-          <div className={utilStyles.lightText}>
-            <Date dateString={postData.date} />
-            <div className={utilStyles.right}><Views id={postData.id}/></div>
-          </div>
+          <small className={utilStyles.smalltext}>
+              <Row className={utilStyles.lightText}>
+                <Col>
+                <Date dateString={postData.date} />
+                <Views id={postData.id} classes={utilStyles.right}/>
+                </Col>
+              </Row>
+              </small>
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>

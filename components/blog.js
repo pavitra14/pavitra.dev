@@ -5,6 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import { useCallback, useRef, useState } from 'react'
 import styles from "./blog.module.css";
 import Views from "./views";
+import { Row, Col } from "react-bootstrap";
 
 export default function Blog({ blogData }) {
   const searchRef = useRef(null)
@@ -66,9 +67,13 @@ export default function Blog({ blogData }) {
                 <a>{title}</a>
               </Link>
               <p className={utilStyles.smalltext}>{excerpt}</p>
-              <small className={utilStyles.lightText}>
+              <small className={utilStyles.smalltext}>
+              <Row className={utilStyles.lightText}>
+                <Col>
                 <Date dateString={date} />
-                <div className={`${utilStyles.right} ${utilStyles.smalltext}`}><Views id={id}/></div>
+                <Views id={id} classes={utilStyles.right}/>
+                </Col>
+              </Row>
               </small>
             </li>
           ))}
