@@ -4,7 +4,7 @@ export default class Constants{
     static SITE_DESCRIPTION= "Web Developer, Backend Engineer, Student";
     static SHORT_INTRO = "Software Development Engineer - I @ Amazon 🇮🇳";
 
-    static REMOTE_URL = "https://pbehre.in";
+    static REMOTE_URL = "https://pavitra.dev";
     static DEV_URL = "http://localhost:3000";
 
     static BASE_URL = () => {
