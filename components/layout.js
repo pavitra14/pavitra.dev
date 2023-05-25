@@ -36,7 +36,7 @@ export default function Layout({ children, home }) {
           </>
         ): (<></>)}
         <link rel="canonical" href="index.html" />
-        <meta property="og:url" content="https://pbehre.in/" />
+        <meta property="og:url" content="https://pavitra.dev/" />
         <meta property="og:site_name" content={Constants.SITE_TITLE}  />
       </Head>
       <div className="home">
