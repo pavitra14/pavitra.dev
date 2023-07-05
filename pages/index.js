@@ -13,7 +13,7 @@ function Home({ allPostsData }) {
       <div className="home">
       <p className="blog-description">{Constants.SHORT_INTRO}</p>
         <p className="blog-links">
-        <a href="https://github.com/pavitra14" target="_blank">Github</a> | <a href="https://pavitra.dev/resumes/Resume.pdf" target="_blank">Resume</a> | <a href="https://www.linkedin.com/in/pavitrabehre" target="_blank">LinkedIn</a>
+        <a href="https://github.com/pavitra14" target="_blank">Github</a> | <a href="https://pavitra.dev/resumes/Resume.pdf" target="_blank">Resume</a> | <a href="https://www.linkedin.com/in/pavitrabehre" target="_blank">LinkedIn</a> | <a href="https://status.pavitra.dev" target="_blank">Status</a>
       </p>
       </div>
 

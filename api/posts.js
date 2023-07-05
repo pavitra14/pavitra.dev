@@ -112,8 +112,8 @@ async function updateCache()
 {
   exec("git pull");
   
-  newCache = {}
-  allIds = getAllPostIds(false);
+  var newCache = {}
+  var allIds = getAllPostIds(false);
   newCache.postData = {}
   for (let index = 0; index < allIds.length; index++) {
     const obj = allIds[index];
@@ -137,8 +137,8 @@ async function updateCache()
     console.log(newCache.getSortedPostsData);
   });
   
-  exec("yarn install && yarn build")
-  exec("pm2 restart pbehrein")
+  exec("npm install && npm run build")
+  exec("sudo pm2 restart app")
   return fs.existsSync(cacheFilePath);
 }
 module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache, getCache }
