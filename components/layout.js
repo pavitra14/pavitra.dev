@@ -48,13 +48,11 @@ export default function Layout({ children, home }) {
         ) : (
           <>
             <Link href="/">
-              <a>
                 <div className="blog-avatar" style= {{ backgroundImage: `url('/images/profile.jpg')`}} />
-              </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className="blog-title">{Constants.USER_NAME}</a>
+              <Link href="/" className="blog-title" >
+                {Constants.USER_NAME}
               </Link>
             </h2>
           </>
@@ -64,7 +62,7 @@ export default function Layout({ children, home }) {
       {!home && (
         <div className="back">
           <Link href="/">
-            <a>Back to home</a>
+            Back to home
           </Link>
         </div>
       )}

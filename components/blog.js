@@ -64,7 +64,7 @@ export default function Blog({ blogData }) {
             {results.map(({ id, date, title, excerpt }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+                {title}
               </Link>
               <p className={utilStyles.smalltext}>{excerpt}</p>
               <small className={utilStyles.smalltext}>
