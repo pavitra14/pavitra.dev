@@ -110,6 +110,7 @@ async function getPostData(id, cached = true) {
 
 async function updateCache()
 {
+  exec("git restore .");
   exec("git pull");
   
   var newCache = {}
@@ -136,7 +137,7 @@ async function updateCache()
     console.log('Posts cached.');
     console.log(newCache.getSortedPostsData);
   });
-  
+
   exec("npm install && npm run build")
   exec("sudo pm2 restart app")
   return fs.existsSync(cacheFilePath);
