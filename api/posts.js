@@ -139,7 +139,7 @@ async function updateCache()
   });
 
   exec("npm install && npm run build")
-  exec("sudo pm2 restart app")
+  exec("sudo pm2 restart website")
   return fs.existsSync(cacheFilePath);
 }
 module.exports = { getAllPostIds, getPostData, getSortedPostsData, updateCache, getCache }
