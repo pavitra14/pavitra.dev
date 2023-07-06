@@ -10,7 +10,6 @@ export default class Constants{
 
     static BASE_URL = () => {
         if(process.env.VERCEL) {
-            console.log("Application is hosted via vercel.")
             return this.VERCEL_URL;
         }
         if(process.env.mode == "DEV") {
