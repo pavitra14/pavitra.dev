@@ -9,7 +9,7 @@ export default class Constants{
     static DEV_URL = "http://localhost:3000";
 
     static BASE_URL = () => {
-        if(process.env.VERCEL) {
+        if(process.env.VERCEL || process.env.VERCEL == "True") {
             return this.VERCEL_URL;
         }
         if(process.env.mode == "DEV") {

@@ -1,25 +1,47 @@
-import Layout from "../../components/layout";
+import Layout from "@/components/layout";
 import Head from "next/head";
-import Date from "../../components/date";
-import utilStyles from "../../styles/utils.module.css";
+import Date from "@/components/date";
+import utilStyles from "@/styles/utils.module.css";
 import "prismjs/themes/prism.css";
 import Image from "next/image";
-import Constants from "../../constants/constants";
-import Views from "../../components/views";
+import Constants from "@/constants/constants";
+import Views from "@/components/views";
 import { Row, Col } from "react-bootstrap";
+import ErrorPage from 'next/error';
+
 
 export async function getServerSideProps({ params }) {
-  const route = Constants.GET_ROUTE("getPost");
-  const res = await fetch(`${route}${params.id}`);
-  const postData = await res.json();
-  return {
-    props: {
-      postData,
-    },
-  };
+  try {
+    const route = Constants.GET_ROUTE("getPost");
+    const res = await fetch(`${route}${params.id}`);
+    if(res.status != 200) {
+      return {
+        notFound: true,
+      }
+    }
+    const postData = await res.json();
+    return {
+      props: {
+        postData,
+      },
+    };
+  } catch (err) {
+    return {
+      props: {
+        postData: {
+          error: true,
+          msg: err.message
+        }
+      }
+    }
+  }
 }
 
 export default function Post({ postData }) {
+  if (postData.error) {
+    const errMessage = "Internal Server Error - " + postData.msg;
+    return <ErrorPage statusCode={500} title={errMessage} />
+  }
   return (
     <Layout>
       <Head>
