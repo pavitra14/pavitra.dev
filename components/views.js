@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import Constants from "../constants/constants";
+import Constants from "@/constants/constants";
 
 export default function Views({ id, classes }) {
     const q = id;

@@ -1,9 +1,7 @@
 import FuzzySearch from 'fuzzy-search';
+import getSortedPostsData from "@/scripts/getSortedPostsData";
 
-var api = require("../../api/posts");
-var cache = api.getCache();
-
-const searcher = new FuzzySearch(cache.getSortedPostsData, ['title'], {
+const searcher = new FuzzySearch(getSortedPostsData(), ['title'], {
     caseSensitive: false,
 });
 

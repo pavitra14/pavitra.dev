@@ -1,7 +1,7 @@
 import Router from 'next/router'
-import "../styles/prismic.css";
-import "../styles/global.css";
-import "../styles/nprogress.css";
+import "@/styles/prismic.css";
+import "@/styles/global.css";
+import "@/styles/nprogress.css";
 import NProgress from 'nprogress'
 
 Router.events.on('routeChangeStart', ()=> NProgress.start())

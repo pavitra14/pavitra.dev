@@ -1,20 +1,25 @@
 import Head from "next/head";
-import Layout from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
-import Blog from "../components/blog";
-import Constants from "../constants/constants";
+import Layout from "@/components/layout";
+import utilStyles from "@/styles/utils.module.css";
+import Blog from "@/components/blog";
+import Constants from "@/constants/constants";
+import ErrorPage from 'next/error';
 
 function Home({ allPostsData }) {
+  if (allPostsData.error) {
+    const errMessage = "Internal Server Error - " + allPostsData.msg;
+    return <ErrorPage statusCode={500} title={errMessage} />
+  }
   return (
     <Layout home>
       <Head>
         <title>{Constants.SITE_TITLE}</title>
       </Head>
       <div className="home">
-      <p className="blog-description">{Constants.SHORT_INTRO}</p>
+        <p className="blog-description">{Constants.SHORT_INTRO}</p>
         <p className="blog-links">
-        <a href="https://github.com/pavitra14" target="_blank">Github</a> | <a href="https://pavitra.dev/resumes/Resume.pdf" target="_blank">Resume</a> | <a href="https://www.linkedin.com/in/pavitrabehre" target="_blank">LinkedIn</a> | <a href="https://status.pavitra.dev" target="_blank">Status</a>
-      </p>
+          <a href="https://github.com/pavitra14" target="_blank">Github</a> | <a href="https://pavitra.dev/resumes/Resume.pdf" target="_blank">Resume</a> | <a href="https://www.linkedin.com/in/pavitrabehre" target="_blank">LinkedIn</a> | <a href="https://status.pavitra.dev" target="_blank">Status</a>
+        </p>
       </div>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -30,17 +35,29 @@ function Home({ allPostsData }) {
 }
 
 export async function getServerSideProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const route = Constants.GET_ROUTE("getSortedPostsData");
-  const res = await fetch(route);
-  const allPostsData = await res.json();
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      allPostsData,
-    },
+  try {
+    // Call an external API endpoint to get posts.
+    // You can use any data fetching library
+    const route = Constants.GET_ROUTE("getSortedPostsData");
+    const res = await fetch(route);
+
+    const allPostsData = await res.json();
+    // By returning { props: { posts } }, the Blog component
+    // will receive `posts` as a prop at build time
+    return {
+      props: {
+        allPostsData,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {
+        allPostsData: {
+          error: true,
+          msg: err.message
+        }
+      }
+    }
   }
 }
 
