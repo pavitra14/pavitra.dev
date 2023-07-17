@@ -8,18 +8,19 @@ import Constants from "@/constants/constants";
 import Views from "@/components/views";
 import { Row, Col } from "react-bootstrap";
 import ErrorPage from 'next/error';
+import {fetchAndCache} from "@/scripts/UpstashCache";
 
 
 export async function getServerSideProps({ params }) {
   try {
     const route = Constants.GET_ROUTE("getPost");
-    const res = await fetch(`${route}${params.id}`);
-    if(res.status != 200) {
+    const res = await fetchAndCache(`${route}${params.id}`);
+    const postData = await res;
+    if(res.error !== undefined) {
       return {
         notFound: true,
       }
     }
-    const postData = await res.json();
     return {
       props: {
         postData,

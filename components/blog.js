@@ -1,11 +1,12 @@
 import Link from "next/link";
-import Date from "../components/date";
-import Constants from "../constants/constants";
-import utilStyles from "../styles/utils.module.css";
+import Date from "@/components/date";
+import Constants from "@/constants/constants";
+import utilStyles from "@/styles/utils.module.css";
 import { useCallback, useRef, useState } from 'react'
 import styles from "./blog.module.css";
 import Views from "./views";
 import { Row, Col } from "react-bootstrap";
+import {fetchAndCache} from "@/scripts/UpstashCache";
 
 export default function Blog({ blogData }) {
   const searchRef = useRef(null)
@@ -19,9 +20,10 @@ export default function Blog({ blogData }) {
     const query = event.target.value;
     setQuery(query)
     if (query.length) {
-      fetch(searchEndpoint(query))
-        .then(res => res.json())
+      fetchAndCache(searchEndpoint(query))
+        .then(async res => await res)
         .then(res => {
+          console.log(res)
           setResults(res)
         })
     } else {

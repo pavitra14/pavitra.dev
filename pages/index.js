@@ -4,7 +4,7 @@ import utilStyles from "@/styles/utils.module.css";
 import Blog from "@/components/blog";
 import Constants from "@/constants/constants";
 import ErrorPage from 'next/error';
-
+import {fetchAndCache} from "@/scripts/UpstashCache";
 function Home({ allPostsData }) {
   if (allPostsData.error) {
     const errMessage = "Internal Server Error - " + allPostsData.msg;
@@ -39,9 +39,8 @@ export async function getServerSideProps() {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
     const route = Constants.GET_ROUTE("getSortedPostsData");
-    const res = await fetch(route);
-
-    const allPostsData = await res.json();
+    const res = await fetchAndCache(route);
+    const allPostsData = await res;
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
     return {
