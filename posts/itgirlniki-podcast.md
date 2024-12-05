@@ -5,4 +5,6 @@ excerpt: "Nikita Asrani aka YT: ITgirlniki invited me on a candid session/podcas
 ---
 ### Podcast on my Journey and Internship Experience
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/6FKvkvze3wo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6FKvkvze3wo?si=C_hPH0G6MucHTDYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+#### For some reason if the iframe is not working, Please click [HERE](https://youtu.be/6FKvkvze3wo?si=C_hPH0G6MucHTDYJ) to watch directly in youtube.
