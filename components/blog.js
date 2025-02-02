@@ -43,6 +43,7 @@ export default function Blog({ blogData }) {
     }
   }, [])
 
+  // <Views id={id} classes={utilStyles.right}/>
 
   return (
     <div>
@@ -73,7 +74,7 @@ export default function Blog({ blogData }) {
               <Row className={utilStyles.lightText}>
                 <Col>
                 <Date dateString={date} />
-                <Views id={id} classes={utilStyles.right}/>
+                
                 </Col>
               </Row>
               </small>
