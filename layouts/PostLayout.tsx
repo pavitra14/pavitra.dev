@@ -5,7 +5,7 @@ import type { Blog, Authors } from 'contentlayer/generated';
 import { StatsType } from '@prisma/client';
 
 import siteMetadata from '@/data/siteMetadata';
-import { BlogTags, BlogMeta, BlogNav, TableOfContents, Reactions } from '@/components/blog';
+import { BlogTags, BlogMeta, BlogNav, TableOfContents } from '@/components/blog';
 import { Comments, PageTitle, SectionContainer, ScrollTopAndComment } from '@/components/ui';
 
 interface LayoutProps {
