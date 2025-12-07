@@ -1,11 +1,27 @@
-import { writeFileSync, mkdirSync } from 'fs';
+// scripts/rss.mjs
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { slug } from 'github-slugger';
 import { escape } from 'pliny/utils/htmlEscaper.js';
 import siteMetadata from '../data/siteMetadata.js';
-import tagData from '../app/tag-data.json' assert { type: 'json' };
 import { allBlogs } from '../.contentlayer/generated/index.mjs';
 import { sortPosts } from 'pliny/utils/contentlayer.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load tag-data.json without using import assertions (works across Node versions)
+const tagDataPath = path.join(__dirname, '../app/tag-data.json');
+let tagData = {};
+try {
+  const raw = readFileSync(tagDataPath, 'utf8');
+  tagData = JSON.parse(raw);
+} catch (err) {
+  // If tag-data.json is missing or invalid, log and continue with empty tags.
+  console.error(`Warning: couldn't load ${tagDataPath}:`, err.message);
+  tagData = {};
+}
 
 const outputFolder = process.env.EXPORT ? 'out' : 'public';
 
