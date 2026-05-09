@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import { SearchProvider, SearchConfig } from 'pliny/search/index.js';
 // import { Analytics, AnalyticsConfig } from 'pliny/analytics/index.js';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Header from '@/components/header';
 import Footer from '@/components/footer';
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Footer />
             </SearchProvider>
           </SectionContainer>
+          <SpeedInsights />
         </ThemeProviders>
       </body>
     </html>
