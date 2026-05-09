@@ -6,8 +6,8 @@ import 'remark-github-blockquote-alert/alert.css';
 
 import { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
-import { SearchProvider, SearchConfig } from 'pliny/search';
-// import { Analytics, AnalyticsConfig } from 'pliny/analytics';
+import { SearchProvider, SearchConfig } from 'pliny/search/index.js';
+// import { Analytics, AnalyticsConfig } from 'pliny/analytics/index.js';
 
 import Header from '@/components/header';
 import Footer from '@/components/footer';
@@ -78,7 +78,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
-      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-dark dark:text-white">
+      <body className="dark:bg-dark bg-white pl-[calc(100vw-100%)] text-black antialiased dark:text-white">
+        {/* Soft background glow blobs */}
+        <div className="pointer-events-none fixed inset-0 z-[-2]">
+          <div className="animate-blob absolute top-0 left-1/4 h-96 w-96 rounded-full bg-blue-500/10 opacity-70 mix-blend-multiply blur-[100px] filter dark:bg-blue-600/20 dark:mix-blend-screen"></div>
+          <div
+            className="animate-blob absolute top-0 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 opacity-70 mix-blend-multiply blur-[100px] filter dark:bg-purple-600/20 dark:mix-blend-screen"
+            style={{ animationDelay: '2s' }}
+          ></div>
+          <div
+            className="animate-blob absolute -bottom-32 left-1/2 h-96 w-96 rounded-full bg-pink-500/10 opacity-70 mix-blend-multiply blur-[100px] filter dark:bg-pink-600/20 dark:mix-blend-screen"
+            style={{ animationDelay: '4s' }}
+          ></div>
+        </div>
         <TiltedGridBackground className="inset-x-0 top-0 z-[-1] h-[60vh]" />
 
         <ThemeProviders>
@@ -87,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
-              <main className="mb-auto mt-20">{children}</main>
+              <main className="mt-20 mb-auto">{children}</main>
               <Footer />
             </SearchProvider>
           </SectionContainer>

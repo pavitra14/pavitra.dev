@@ -27,7 +27,7 @@ const siteMetadata = {
   },
   analytics: {
     umamiAnalytics: {
-      umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,
+      umamiWebsiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || process.env.UMAMI_WEBSITE_ID,
     },
   },
   newsletter: {

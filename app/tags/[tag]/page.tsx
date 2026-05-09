@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { slug } from 'github-slugger';
 import { allBlogs } from 'contentlayer/generated';
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer';
+import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js';
 
 import { ListLayout } from 'layouts';
 import tagData from 'app/tag-data.json';

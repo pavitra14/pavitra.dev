@@ -1,5 +1,3 @@
-// @ts-check
-const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 /** @type {import("tailwindcss/types").Config } */
@@ -16,6 +14,12 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        blob: {
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
         'wave-animation': {
           '0%': { transform: 'rotate(0deg)' },
           '10%': { transform: 'rotate(14deg)' },
@@ -52,6 +56,7 @@ module.exports = {
         },
       },
       animation: {
+        blob: 'blob 7s infinite',
         wave: 'wave-animation 2.5s linear infinite',
         'music-bar-1': 'music-bar-1 .8s linear infinite',
         'music-bar-2': 'music-bar-2 .8s linear infinite',
@@ -73,7 +78,16 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-outfit)', ...fontFamily.sans],
+        sans: [
+          'var(--font-outfit)',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
       },
       colors: {
         primary: {
@@ -169,7 +183,7 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary'),
+              color: theme('colors.primary.500'),
               '&:hover': {
                 color: `${theme('colors.sky.400')} !important`,
               },

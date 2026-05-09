@@ -1,4 +1,4 @@
-import { formatDate } from 'pliny/utils/formatDate';
+import { formatDate } from 'pliny/utils/formatDate.js';
 
 // import { StatsType } from '@prisma/client';
 
