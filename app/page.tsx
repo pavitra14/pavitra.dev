@@ -1,11 +1,9 @@
-import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer.js';
-import { allBlogs } from 'contentlayer/generated';
-
+import { getAllBlogs, getHomepageSettings } from '@/utils/mdx';
 import Main from './Main';
 
 export default async function Page() {
-  const sortedPosts = sortPosts(allBlogs);
-  const posts = allCoreContent(sortedPosts);
+  const posts = await getAllBlogs();
+  const settings = await getHomepageSettings();
 
-  return <Main posts={posts} />;
+  return <Main posts={posts} settings={settings} />;
 }

@@ -1,14 +1,14 @@
 import ListLayout from '@/layouts/ListLayoutWithTags';
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js';
-import { allBlogs } from 'contentlayer/generated';
+import { getAllBlogs, getAllTags } from '@/utils/mdx';
 import { genPageMetadata } from 'app/seo';
 
 const POSTS_PER_PAGE = 5;
 
 export const metadata = genPageMetadata({ title: 'Blog' });
 
-export default function BlogPage() {
-  const posts = allCoreContent(sortPosts(allBlogs));
+export default async function BlogPage() {
+  const posts = await getAllBlogs();
+  const tags = await getAllTags();
   const pageNumber = 1;
   const initialDisplayPosts = posts.slice(POSTS_PER_PAGE * (pageNumber - 1), POSTS_PER_PAGE * pageNumber);
   const pagination = {
@@ -17,6 +17,12 @@ export default function BlogPage() {
   };
 
   return (
-    <ListLayout posts={posts} initialDisplayPosts={initialDisplayPosts} pagination={pagination} title="All Posts" />
+    <ListLayout
+      posts={posts}
+      initialDisplayPosts={initialDisplayPosts}
+      pagination={pagination}
+      tags={tags}
+      title="All Posts"
+    />
   );
 }

@@ -4,6 +4,7 @@ import 'pliny/search/algolia.css';
 import 'react-medium-image-zoom/dist/styles.css';
 import 'remark-github-blockquote-alert/alert.css';
 
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import { SearchProvider, SearchConfig } from 'pliny/search/index.js';
@@ -12,7 +13,8 @@ import { SearchProvider, SearchConfig } from 'pliny/search/index.js';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import siteMetadata from '@/data/siteMetadata';
-import { SectionContainer, TiltedGridBackground } from '@/components/ui';
+import { TiltedGridBackground } from '@/components/ui';
+import { LayoutWrapper } from '@/components/LayoutWrapper';
 
 import { ThemeProviders } from './theme-providers';
 import { UmamiAnalytics } from '@/components/analytics/umami';
@@ -93,16 +95,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <TiltedGridBackground className="inset-x-0 top-0 z-[-1] h-[60vh]" />
 
+        <UmamiAnalytics websiteId={siteMetadata.analytics?.umamiAnalytics?.umamiWebsiteId} />
+        <SpeedInsights />
         <ThemeProviders>
           {/* <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} /> */}
-          <UmamiAnalytics websiteId={siteMetadata.analytics?.umamiAnalytics?.umamiWebsiteId} />
-          <SectionContainer>
-            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-              <Header />
-              <main className="mt-20 mb-auto">{children}</main>
-              <Footer />
-            </SearchProvider>
-          </SectionContainer>
+          <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+            <LayoutWrapper header={<Header />} footer={<Footer />}>
+              {children}
+            </LayoutWrapper>
+          </SearchProvider>
         </ThemeProviders>
       </body>
     </html>

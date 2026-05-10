@@ -10,7 +10,9 @@ import { Avatar, Heading, ShortDescription } from '@/components/homepage';
 
 const MAX_DISPLAY = 5;
 
-export default function Home({ posts }) {
+export default function Home({ posts, settings }: { posts: any[]; settings?: any }) {
+  const dynamicDescription = settings?.description || siteMetadata.description;
+
   return (
     <div className="relative">
       <Snowfall
@@ -26,10 +28,10 @@ export default function Home({ posts }) {
       {/* Introduce myself */}
       <div className="mt-8 md:mt-8 dark:divide-gray-700">
         <div className="flex flex-col justify-between md:my-4 md:pb-8 xl:flex-row">
-          <Avatar />
+          <Avatar pictureUrl={settings?.pictureUrl} />
           <div className="my-auto ml-4 flex flex-col text-lg leading-8 text-gray-600 dark:text-gray-400">
             <Heading />
-            <ShortDescription />
+            <ShortDescription description={dynamicDescription} resumeLink={settings?.resumeLink} />
             <p className="flex">
               <span className="mr-2">Happy reading</span>
               <Twemoji emoji="clinking-beer-mugs" />

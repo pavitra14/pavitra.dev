@@ -1,7 +1,6 @@
 'use client';
 
 import { slug } from 'github-slugger';
-import tagData from 'app/tag-data.json';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { formatDate } from 'pliny/utils/formatDate.js';
@@ -21,6 +20,7 @@ interface ListLayoutProps {
   title: string;
   initialDisplayPosts?: CoreContent<Blog>[];
   pagination?: PaginationProps;
+  tags?: Record<string, number>;
 }
 
 function Pagination({ totalPages, currentPage }: PaginationProps) {
@@ -61,9 +61,15 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   );
 }
 
-export default function ListLayoutWithTags({ posts, title, initialDisplayPosts = [], pagination }: ListLayoutProps) {
+export default function ListLayoutWithTags({
+  posts,
+  title,
+  initialDisplayPosts = [],
+  pagination,
+  tags,
+}: ListLayoutProps) {
   const pathname = usePathname();
-  const tagCounts = tagData as Record<string, number>;
+  const tagCounts = tags || {};
   const tagKeys = Object.keys(tagCounts);
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);
   const [searchValue, setSearchValue] = useState('');

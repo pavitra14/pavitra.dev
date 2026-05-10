@@ -1,11 +1,9 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { slug } from 'github-slugger';
-import { allBlogs } from 'contentlayer/generated';
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js';
+import { getAllBlogs, getAllTags } from '@/utils/mdx';
 
 import { ListLayout } from 'layouts';
-import tagData from 'app/tag-data.json';
 import { genPageMetadata } from 'app/seo';
 import siteMetadata from '@/data/siteMetadata';
 
@@ -26,7 +24,7 @@ export async function generateMetadata(props: { params: Promise<{ tag: string }>
 }
 
 export const generateStaticParams = async () => {
-  const tagCounts = tagData as Record<string, number>;
+  const tagCounts = await getAllTags();
 
   const tagKeys = Object.keys(tagCounts);
 
@@ -39,14 +37,13 @@ export const generateStaticParams = async () => {
 
 export default async function TagPage(props: { params: Promise<{ tag: string }> }) {
   const params = await props.params;
-  const tag = decodeURI(params.tag);
+  const decodedTag = decodeURI(params.tag);
 
   // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1);
+  const title = decodedTag[0].toUpperCase() + decodedTag.split(' ').join('-').slice(1);
 
-  const filteredPosts = allCoreContent(
-    sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
-  );
+  const allBlogs = await getAllBlogs();
+  const filteredPosts = allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(decodedTag));
 
   if (filteredPosts.length === 0) {
     return notFound();

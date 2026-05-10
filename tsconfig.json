@@ -28,7 +28,8 @@
       "@/libs/*": ["./libs/*"],
       "@/css/*": ["./css/*"],
       "public/*": ["./public/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "@/*": ["./*"]
     },
     "plugins": [
       {
