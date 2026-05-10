@@ -29,5 +29,6 @@ export const authConfig = {
     },
   },
   providers: [], // Add providers with an empty array for now
+  trustHost: true,
   secret: process.env.ENC_SECRET || 'fallback-super-secret-key-for-authjs-123456',
 } satisfies NextAuthConfig;
