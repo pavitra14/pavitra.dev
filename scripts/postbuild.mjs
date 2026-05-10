@@ -1,7 +1,5 @@
-import rss from './rss.mjs';
-
 async function postbuild() {
-  await rss();
+  console.log('postbuild running - doing nothing since local development');
 }
 
 postbuild();

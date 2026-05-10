@@ -1,5 +1,5 @@
 // scripts/rss.mjs
-import { writeFileSync, mkdirSync, readFileSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { slug } from 'github-slugger';
@@ -14,13 +14,14 @@ const __dirname = path.dirname(__filename);
 // Load tag-data.json without using import assertions (works across Node versions)
 const tagDataPath = path.join(__dirname, '../app/tag-data.json');
 let tagData = {};
-try {
-  const raw = readFileSync(tagDataPath, 'utf8');
-  tagData = JSON.parse(raw);
-} catch (err) {
-  // If tag-data.json is missing or invalid, log and continue with empty tags.
-  console.error(`Warning: couldn't load ${tagDataPath}:`, err.message);
-  tagData = {};
+if (existsSync(tagDataPath)) {
+  try {
+    const raw = readFileSync(tagDataPath, 'utf8');
+    tagData = JSON.parse(raw);
+  } catch (err) {
+    // If tag-data.json is invalid, log and continue with empty tags.
+    console.error(`Warning: couldn't parse ${tagDataPath}:`, err.message);
+  }
 }
 
 const outputFolder = process.env.EXPORT ? 'out' : 'public';
