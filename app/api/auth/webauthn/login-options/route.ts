@@ -9,6 +9,7 @@ export async function GET() {
     rpID: process.env.NEXT_PUBLIC_APP_URL ? new URL(process.env.NEXT_PUBLIC_APP_URL).hostname : 'localhost',
     allowCredentials: userPasskeys.map((passkey) => ({
       id: Buffer.from(passkey.id, 'base64url'),
+      type: 'public-key',
       transports: passkey.transports as any,
     })),
     userVerification: 'preferred',

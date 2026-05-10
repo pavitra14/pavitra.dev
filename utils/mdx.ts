@@ -18,9 +18,27 @@ export interface Blog {
   layout?: string;
   canonicalUrl?: string;
   slug: string;
+  path: string;
+  type: string;
   readingTime?: any;
   toc?: any;
   structuredData?: any;
+  body: {
+    raw: string;
+  };
+}
+
+export interface Author {
+  name: string;
+  avatar: string;
+  occupation: string;
+  company: string;
+  email: string;
+  twitter: string;
+  linkedin: string;
+  github: string;
+  layout: string;
+  slug: string;
   body: {
     raw: string;
   };
@@ -66,6 +84,8 @@ export const getAllBlogs = unstable_cache(
         layout: data.layout || 'PostLayout',
         canonicalUrl: data.canonicalUrl,
         slug,
+        path: `blog/${slug}`,
+        type: 'Blog',
         readingTime: readingTime(content),
         toc: generateToc(content),
         body: {
@@ -113,6 +133,8 @@ export const getBlogBySlug = unstable_cache(
       layout: data.layout || 'PostLayout',
       canonicalUrl: data.canonicalUrl,
       slug,
+      path: `blog/${slug}`,
+      type: 'Blog',
       readingTime: readingTime(content),
       toc: generateToc(content),
       body: {
@@ -137,7 +159,7 @@ export const getBlogBySlug = unstable_cache(
 export const getAllAuthors = unstable_cache(
   async () => {
     const objects = await listS3Objects('authors/');
-    const authors = [];
+    const authors: Author[] = [];
 
     for (const obj of objects) {
       if (!obj.Key || !obj.Key.endsWith('.mdx')) continue;

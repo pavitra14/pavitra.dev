@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   try {
     const { settings } = await request.json();
     await putS3Object(SETTINGS_KEY, JSON.stringify(settings, null, 2), 'application/json');
-    revalidateTag('settings'); // Instantly invalidate frontend settings cache
+    revalidateTag('settings', 'default'); // Instantly invalidate frontend settings cache
     return NextResponse.json({ success: true });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

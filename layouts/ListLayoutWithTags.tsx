@@ -4,8 +4,8 @@ import { slug } from 'github-slugger';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { formatDate } from 'pliny/utils/formatDate.js';
-import { CoreContent } from 'pliny/utils/contentlayer.js';
-import type { Blog } from 'contentlayer/generated';
+import type { Blog } from '@/utils/mdx';
+import type { CoreContent } from '@/utils/mdx';
 
 import { Link, Tag } from '@/components/ui';
 import siteMetadata from '@/data/siteMetadata';

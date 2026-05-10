@@ -20,7 +20,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             const { getPasskeys } = await import('./utils/passkeys');
             const { cookies } = await import('next/headers');
 
-            const expectedChallenge = cookies().get('webauthn_challenge')?.value;
+            const cookieStore = await cookies();
+            const expectedChallenge = cookieStore.get('webauthn_challenge')?.value;
             if (!expectedChallenge) return null;
 
             const body = JSON.parse(credentials.webauthnResponse as string);

@@ -35,7 +35,7 @@ export async function GET() {
 
   try {
     const objects = await listS3Objects('settings/content-types/');
-    const contentTypes = [];
+    const contentTypes: Record<string, unknown>[] = [];
 
     for (const obj of objects) {
       const content = await getS3Object(obj.Key!);
@@ -45,7 +45,7 @@ export async function GET() {
     }
 
     // Sort by createdAt descending
-    contentTypes.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    contentTypes.sort((a, b) => new Date(b.createdAt as string).getTime() - new Date(a.createdAt as string).getTime());
     return NextResponse.json(contentTypes);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -85,11 +85,11 @@ export async function POST(request: Request) {
     };
 
     await putS3Object(key, JSON.stringify(newContentType), 'application/json');
-    revalidateTag('content-types'); // Instantly invalidate frontend cache
+    revalidateTag('content-types', 'default'); // Instantly invalidate frontend cache
     return NextResponse.json(newContentType, { status: 201 });
   } catch (error: any) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
+      return NextResponse.json({ error: error.issues }, { status: 400 });
     }
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

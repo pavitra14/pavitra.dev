@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     const s3Key = key.startsWith('blogs/') ? key : `blogs/${key}`;
     await putS3Object(s3Key, content);
 
-    revalidateTag('blogs'); // Instantly invalidate frontend blog cache
+    revalidateTag('blogs', 'default'); // Instantly invalidate frontend blog cache
 
     return NextResponse.json({ success: true, key: s3Key });
   } catch (error: any) {
@@ -50,7 +50,7 @@ export async function DELETE(request: Request) {
 
   try {
     await deleteS3Object(key);
-    revalidateTag('blogs'); // Instantly invalidate frontend blog cache
+    revalidateTag('blogs', 'default'); // Instantly invalidate frontend blog cache
     return NextResponse.json({ success: true });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import { CoreContent } from 'pliny/utils/contentlayer.js';
-import type { Blog, Authors } from 'contentlayer/generated';
+import type { CoreContent, Blog, Author as Authors } from '@/utils/mdx';
 
 import { StatsType } from '@prisma/client';
 

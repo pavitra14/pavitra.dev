@@ -15,9 +15,12 @@ export async function GET() {
     rpName: 'Pavitra CMS',
     rpID: process.env.NEXT_PUBLIC_APP_URL ? new URL(process.env.NEXT_PUBLIC_APP_URL).hostname : 'localhost',
     userName: session.user.email || 'admin',
+    userDisplayName: session.user.name || session.user.email || 'admin',
+    userID: session.user?.email || 'admin',
     attestationType: 'none',
     excludeCredentials: userPasskeys.map((passkey) => ({
-      id: passkey.id,
+      id: Buffer.from(passkey.id, 'base64url'),
+      type: 'public-key',
       transports: passkey.transports as any,
     })),
     authenticatorSelection: {

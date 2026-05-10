@@ -10,7 +10,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const expectedChallenge = cookies().get('webauthn_challenge')?.value;
+  const cookieStore = await cookies();
+  const expectedChallenge = cookieStore.get('webauthn_challenge')?.value;
   if (!expectedChallenge) {
     return NextResponse.json({ error: 'Missing challenge' }, { status: 400 });
   }
