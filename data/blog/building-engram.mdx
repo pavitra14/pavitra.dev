@@ -1,0 +1,95 @@
+---
+title: 'I kept losing my best ideas to my own phone, so I built Engram'
+date: '2026-11-17'
+summary: 'Why I built Engram, a free, local-first second brain for Android: one step to catch a thought, it sorts itself, and it brings the good stuff back.'
+tags: ['Engram', 'side project', 'React Native', 'productivity', 'Android']
+images: ['/static/images/blogs/engram/capture-sort.webp']
+draft: true
+---
+
+You know that thought you had in the shower this morning? The really good one?
+
+Yeah. Me neither.
+
+_Note: this is less of a product launch and more of a confession. The product is at the end, I promise._
+
+### The problem (or how my phone ate my brain)
+
+I get my best ideas at the worst possible times. Walking. Driving. Halfway through someone else's sentence. Lying in bed at 1 am convinced I've just solved a problem I've been stuck on for a week.
+
+And every single time, I reach for the one device that is _literally designed_ to make me forget why I picked it up.
+
+Here's how it goes. I unlock my phone to note something down. There's a notification. I check it, obviously. Then there's a reel. Then another one. Twenty minutes later I'm watching a man restore a rusty knife and I have absolutely no idea what I unlocked my phone for. The idea is gone. Dead. Never to be seen again.
+
+And the ideas that _do_ survive aren't doing much better. I had them scattered everywhere:
+
+- A notes app full of notes titled "Untitled", "Untitled (2)" and, my personal favourite, "asdf"
+- A WhatsApp chat with myself, which is basically a graveyard of links I'll "read later"
+- Hundreds of screenshots of things I wanted to remember, buried somewhere between memes and boarding passes
+- Voice notes I never listened to again
+
+I wasn't short of ideas. I was short of a place where they could actually _live_.
+
+### Why the existing apps didn't work for me
+
+I tried the usual suspects. Some were brilliant but needed me to decide where things go. Folder? Tag? Which notebook? By the time I've made three decisions about a thought, the thought has left the building.
+
+Others wanted an account, a sync server and a subscription before I could write down one line. My random 1 am thoughts are honestly nobody's business, and I didn't love the idea of them sitting on someone else's server.
+
+So I wrote down what I actually wanted (in a notes app, ironically):
+
+1. **Catching a thought should take one step.** Talk, type or share. No folders, no titles, no decisions.
+2. **It should sort itself.** Related stuff should find each other without me playing librarian.
+3. **It should bring things back.** A note I never see again is a note I never wrote.
+4. **It should stay on my phone.** No account. No ads. No tracking.
+
+That list became Engram.
+
+### Wait, what's an engram?
+
+An engram is the physical trace a memory leaves in your brain. It felt right for an app whose whole job is to keep your thoughts from disappearing. (Also the domain was available, which is honestly how most names get picked.)
+
+### What I built
+
+This isn't my first attempt at a "second brain". I tried a version before that needed a server and a lot of moving parts. It worked, kind of, but it was too heavy for something you're supposed to use in two seconds. So I started over: a React Native app, Android first, with everything stored in a database on the phone.
+
+Here's what it does today:
+
+![Sharing into Engram, the Today screen, and the map of groups](/static/images/blogs/engram/capture-sort.webp)
+
+**Every way in is one tap.** Share a link or a reel from any app. Tap the mic and talk, and it's turned into text on the phone, not in the cloud. Type one line and that line becomes the title. There's a home-screen widget and a Quick Settings tile, so you can catch something from anywhere without even opening the app. Words in your photos and screenshots become searchable too, in English and Hindi.
+
+**It sorts itself.** Thoughts link up with related ones and gather into groups named from your own words, like "Sourdough" or "Hampi trip". If you turn it on, a small model running on the phone links notes by _meaning_, so "book the garage" and "oil change due" end up together even though they share no words. The map shows your groups as circles, sized by how much you've been thinking about them. It's a slightly scary way to find out what's actually on your mind.
+
+**It brings things back.** Write "call mum tomorrow 6pm" and the reminder sets itself. No date pickers. Every day Engram brings back one older thought and asks if it still matters. There's a weekly review, a monthly recap and an "on this day". And when a group has enough in it, you can turn it into one note with a next step, or hand it to Claude or ChatGPT as a ready-made request for a plan.
+
+![To-dos with reminders, and a single thought in the true black theme](/static/images/blogs/engram/remember.webp)
+
+**It's private by default.** Your notes live on your phone. There's no account, no ads and no analytics. It works offline. Backups go wherever you send them, and nowhere else.
+
+### The design bit (because I'm picky)
+
+I wanted it to feel calm. No feed, no streak guilt, no red badges begging for attention. Your words are the biggest thing on the screen, set in a proper serif. There's a true black theme for night, which is easy on the eyes and on AMOLED batteries. Nothing animates just to show off.
+
+The goal was simple: an app that gives your attention back instead of taking more of it.
+
+### Five tiny habits that actually work
+
+This is how I use it, and the honest reason I built it:
+
+1. **Dump, don't sort.** The moment something pops into your head, throw it in. Sorting is the app's job.
+2. **Talk when your hands are busy.** Walking, cooking, waiting for chai. Ten seconds and it's safe.
+3. **Share it, don't screenshot it.** Your camera roll is not a second brain. Trust me, I checked.
+4. **Answer the daily question.** Keep the thought, act on it, or let it go.
+5. **Once a week, do one thing.** Pick your biggest group and turn it into one next step.
+
+### Where it is now
+
+Engram is in beta (0.7.0 beta 2 at the time of writing). It's free, it works on Android 7 and up, and you install it from GitHub for now since it's not on the Play Store yet. It's ready for everyday use, but it's young, so you might find rough edges. Keep a backup, and please break it!
+
+- Website: [engram.pavitra.dev](https://engram.pavitra.dev)
+- Download: [latest release on GitHub](https://github.com/pavitra14/engram/releases/latest)
+- Found a bug? [Open an issue](https://github.com/pavitra14/engram/issues/new). Every report genuinely helps.
+- Anything else: [engram@pavitra.dev](mailto:engram@pavitra.dev)
+
+I built Engram because I was tired of my best ideas dying in the gap between "oh, that's interesting" and the next notification. If that sounds familiar, give it a try and tell me what you think. And if you do have a brilliant idea while reading this, you know where to put it.
